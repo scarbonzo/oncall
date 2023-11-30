@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
+import { Component, OnInit } from '@angular/core';
+import { OncallService } from '../oncall.service';
+import { Oncall } from '../oncall';
 
 @Component({
   selector: 'app-editor',
