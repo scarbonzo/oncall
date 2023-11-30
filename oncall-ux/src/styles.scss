@@ -1,0 +1,102 @@
+@import 'bootstrap/scss/bootstrap';
+
+.navbar-dark{
+    background-color: #145595 !important;
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}
+
+.text-orange {
+    color: orange;
+}
+
+body {
+    background-color: lightgray;
+    font-family: 'Roboto', sans-serif;
+}
+
+.menu-spacer {
+    width: 15px;
+}
+
+.text-yellow {
+    color: yellow !important;
+}
+
+.border-yellow {
+    border-color: yellow;
+    border-width: 2px;
+}
+
+.text-orange {
+    color: orange;
+}
+
+.text-gray {
+    color: grey;
+}
+
+.bg-light-blue {
+    background-color: #daddf2;
+}
+
+.title {
+    font-size: 150% !important;
+    font-weight: bolder;
+}
+
+.strong {
+    font-size: 110% !important;
+    font-weight: bold;
+}
+
+.accordion-button {
+    background-color: silver !important;
+}
+
+.accordion-body {
+    background-color: white !important;
+}
+
+.accordion-item {
+    background-color: whitesmoke;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: lightgray;
+ }
+
+.name {
+    text-align: left;
+    font-weight: bold;
+}
+
+.Holiday {
+    background-color: lightgoldenrodyellow;
+}
+
+.Office {
+    background-color: lightgreen;
+}
+
+.WFH {
+    background-color: lightblue;
+}
+
+.Offsite {
+    background-color: violet;
+}
+
+.Out {
+    background-color: coral;
+}
+
+.Training {
+    background-color: pink;
+}
+
+.today {
+    font-weight: bold;
+}

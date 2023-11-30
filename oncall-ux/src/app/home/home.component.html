@@ -1,0 +1,64 @@
+
+<b>Selected Year:</b>
+<select 
+    class="form-control"
+    name="selectedYear"
+    id="selectedYear"
+    [(ngModel)]="selectedYear"
+    (ngModelChange)="UpdateWeek()"
+    >
+    <option *ngFor="let y of years" [value]="y">{{y}}</option>
+</select>
+<br />
+<b>Selected Week:</b>
+<select 
+    class="form-control"
+    name="selectedWeek"
+    id="selectedWeek"
+    [(ngModel)]="selectedWeek"
+    (ngModelChange)="UpdateWeek()"
+    >
+    <option *ngFor="let w of weeks" [value]="w">{{w}}</option>
+</select>
+<br />
+<h3>On-Call Schedule</h3>
+<table 
+    name="oncalltable"
+    id="oncalltable"
+    class="table">
+    <thead>
+        <tr>
+            <td>Team</td>
+            <td>Primary</td>
+            <td>Backup</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{core[0].team}}</td>
+            <td>{{core[0].primary}}</td>
+            <td>{{core[0].backup}}</td>
+        </tr>
+        <tr>
+            <td>{{web[0].team}}</td>
+            <td>{{web[0].primary}}</td>
+            <td>{{web[0].backup}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+DEBUG:
+<p>Current Year: {{currentYear}}</p>
+<p>Current Week: {{currentWeek}}</p>
+
+<p>Selected Year: {{selectedYear}}</p>
+<p>Selected Week: {{selectedWeek}}</p>
+
