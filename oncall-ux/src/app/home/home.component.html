@@ -1,65 +1,117 @@
+<table class="table-sm" style="width:200px;">
+    <tr>
+        <td><b>Year</b></td>
+        <td><select 
+            class="form-control"
+            name="selectedYear"
+            id="selectedYear"
+            [(ngModel)]="selectedYear"
+            (ngModelChange)="GetWeek()"
+            >
+            <option *ngFor="let y of years" [value]="y">{{y}}</option>
+        </select></td>
+    </tr>
+    <tr>
+        <td><b>Week</b></td>
+        <td><select 
+            class="form-control"
+            name="selectedWeek"
+            id="selectedWeek"
+            [(ngModel)]="selectedWeek"
+            (ngModelChange)="GetWeek()"
+            >
+            <option *ngFor="let w of weeks" [value]="w">{{w}}</option>
+        </select></td>
+    </tr>
+</table>
 
-<b>Selected Year:</b>
-<select 
-    class="form-control"
-    name="selectedYear"
-    id="selectedYear"
-    [(ngModel)]="selectedYear"
-    (ngModelChange)="UpdateWeek()"
-    >
-    <option *ngFor="let y of years" [value]="y">{{y}}</option>
-</select>
 <br />
-<b>Selected Week:</b>
-<select 
-    class="form-control"
-    name="selectedWeek"
-    id="selectedWeek"
-    [(ngModel)]="selectedWeek"
-    (ngModelChange)="UpdateWeek()"
-    >
-    <option *ngFor="let w of weeks" [value]="w">{{w}}</option>
-</select>
-<br />
-<h3>On-Call Schedule</h3>
-<table 
-    name="oncalltable"
-    id="oncalltable"
-    class="table">
+<h4>Current Teams</h4>
+<table *ngIf="core != null && web != null" class="table table-bordered table-sm table-dark" style="width:437px; text-align: center;">
     <thead>
         <tr>
-            <td>Team</td>
-            <td>Primary</td>
-            <td>Backup</td>
+            <th class="col-4">Team</th>
+            <th class="col-4 bg-success">Primary</th>
+            <th class="col-4 bg-primary">Backup</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>{{core[0].team}}</td>
-            <td>{{core[0].primary}}</td>
-            <td>{{core[0].backup}}</td>
-            <td><a href="/editor/{{core[0].team}}/{{core[0].year}}/{{core[0].week}}">Edit</a></td>
+            <th class="">Core</th>
+            <td class="bg-success">{{corePrimary}}</td>
+            <td class="bg-primary">{{coreBackup}}</td>
         </tr>
         <tr>
-            <td>{{web[0].team}}</td>
-            <td>{{web[0].primary}}</td>
-            <td>{{web[0].backup}}</td>
+            <th class="">Web</th>
+            <td class="bg-success">{{webPrimary}}</td>
+            <td class="bg-primary">{{webBackup}}</td>
         </tr>
     </tbody>
 </table>
 
+<h4>Updated Teams</h4>
+<table *ngIf="core != null && web != null" class="table table-hover table-bordered table-sm table-dark" style="width:600px; text-align: center;">
+    <thead>
+        <tr>
+            <th class="col-2">Team</th>
+            <th class="col-3 bg-success">Primary</th>
+            <th class="col-3 bg-primary">Backup</th>
+            <th class="col-3">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Core</th>
+            <td class="bg-success">
+                <select
+                    class="form-control"
+                    name="corePrimary"
+                    id="corePrimary"
+                    [(ngModel)]="core[0].primary"
+                    >
+                    <option *ngFor="let p of coreTeam" [value]="p">{{p}}</option>
+                </select>
+            </td>
+            <td class="bg-primary">
+                <select
+                    class="form-control"
+                    name="coreBackup"
+                    id="coreBackup"
+                    [(ngModel)]="core[0].backup"
+                    >
+                    <option *ngFor="let b of coreTeam" [value]="b">{{b}}</option>
+                </select>
+            </td>
+            <td>
+                <button *ngIf="core[0].primary != corePrimary || core[0].backup !=  coreBackup" type="button" class="btn btn-danger" (click)="UpdateCore()">Update</button>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Web</th>
+            <td class="bg-success">
+                <select
+                    class="form-control"
+                    name="webPrimary"
+                    id="webPrimary"
+                    [(ngModel)]="web[0].primary"
+                    >
+                    <option *ngFor="let p of webTeam" [value]="p">{{p}}</option>
+                </select>
+            </td>
+            <td class="bg-primary">
+                <select
+                    class="form-control"
+                    name="webBackup"
+                    id="webBackup"
+                    [(ngModel)]="web[0].backup"
+                    >
+                    <option *ngFor="let b of webTeam" [value]="b">{{b}}</option>
+                </select>
+            </td>
+            <td>
+                <button *ngIf="web[0].primary != webPrimary || web[0].backup !=  webBackup" type="button" class="btn btn-danger" (click)="UpdateWeb()">Update</button>
+        </tr>
+    </tbody>
+</table>
 
-
-
-
-
-
-
-
-DEBUG:
-<p>Current Year: {{currentYear}}</p>
-<p>Current Week: {{currentWeek}}</p>
-
-<p>Selected Year: {{selectedYear}}</p>
-<p>Selected Week: {{selectedWeek}}</p>
 
